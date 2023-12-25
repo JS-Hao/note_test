@@ -19,6 +19,8 @@
     "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
     "shortid": "^2.2.16",
+    "slate": "^0.101.5",
+    "slate-react": "^0.101.5",
     "styled-components": "^6.1.3",
     "typescript": "^5.3.3",
     "web-vitals": "^2.1.0"

@@ -15,8 +15,8 @@ export class Store {
     const notes = Array.from(this._map.values());
     return notes
       .sort((it1, it2) => it1.updatedTime - it2.updatedTime)
-      .map(({ id, title }) => {
-        return { id, title };
+      .map(({ id, title, updatedTime }) => {
+        return { id, title, updatedTime };
       });
   }
 
@@ -32,13 +32,14 @@ export class Store {
   createNote() {
     const note = new Note();
     this._map.set(note.id, note);
+    return note;
   }
 
   deleteNote(id: string) {
     this._map.delete(id);
   }
 
-  findNodte(id: string) {
+  findNote(id: string) {
     return this._map.get(id);
   }
 }

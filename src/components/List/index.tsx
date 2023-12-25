@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import { observer } from "mobx-react-lite";
-import { Container } from "./styled";
+import { Container, ListItem } from "./styled";
 import { Store } from "../../models";
 
 interface ListProps {
@@ -11,7 +12,14 @@ export const List = observer((props: ListProps) => {
   return (
     <Container>
       {list.map((it) => {
-        return <div key={it.id}>{it.title}</div>;
+        return (
+          <ListItem key={it.id}>
+            <Link to={`/note/${it.id}`}>
+              <div className="title">{it.title}</div>
+              <div className="updated-time">{it.updatedTime}</div>
+            </Link>
+          </ListItem>
+        );
       })}
     </Container>
   );
