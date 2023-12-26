@@ -1,13 +1,9 @@
 import Dexie, { Table } from "dexie";
-import { Note } from "../models";
+import { NoteData } from "../models";
 
-interface Item {
-  id: string;
-  title: string;
-  createdTime: number;
-  updatedTime: number;
+type Item = Pick<NoteData, "id" | "title" | "createdTime" | "updatedTime"> & {
   content: string;
-}
+};
 
 class CustomDexie extends Dexie {
   notes!: Table<Item>;
@@ -20,10 +16,10 @@ class CustomDexie extends Dexie {
   }
 }
 
-class Local {
+export class Local {
   private _db: CustomDexie = new CustomDexie();
 
-  async addNote(note: Note) {
+  async addItem(note: NoteData) {
     const item: Item = {
       id: note.id,
       title: note.title,
@@ -34,7 +30,7 @@ class Local {
     return this._db.notes.add(item);
   }
 
-  async updateNote(note: Note) {
+  async updateItem(note: NoteData) {
     const item: Item = {
       id: note.id,
       title: note.title,
@@ -45,16 +41,14 @@ class Local {
     return this._db.notes.update(item.id, item);
   }
 
-  async deleteNote(id: string) {
+  async deleteItem(id: string) {
     return this._db.notes.delete(id);
   }
 
-  async getNotes(): Promise<Note[]> {
+  async getItems() {
     return (await this._db.notes.toArray()).map((it) => ({
       ...it,
       content: JSON.parse(it.content),
-    })) as Note[];
+    })) as NoteData[];
   }
 }
-
-export const local = new Local();

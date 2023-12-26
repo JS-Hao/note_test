@@ -1,6 +1,5 @@
 import { useLoaderData, LoaderFunction } from "react-router-dom";
-import { store } from "../../models";
-import { ErrorPage } from "../ErrorPage";
+import { application } from "../../models";
 import { useCallback, useMemo } from "react";
 import { observer } from "mobx-react-lite";
 import { Descendant, createEditor } from "slate";
@@ -19,7 +18,7 @@ export const NoteLoader: LoaderFunction = ({ params }: any) => {
 
 export const Note = observer(() => {
   const { noteId } = useLoaderData() as { noteId: string };
-  const note = useMemo(() => store.findNote(noteId), [noteId]);
+  const note = application.findNote(noteId);
   const editor = useMemo(() => withHistory(withReact(createEditor())), []);
   const handleValueChange = useCallback(
     (curValue: Descendant[]) => {
@@ -28,14 +27,18 @@ export const Note = observer(() => {
     [note]
   );
 
-  if (!note) return <ErrorPage />;
+  if (!note) return <></>;
   return (
     <Slate
       editor={editor}
       initialValue={note.content}
       onValueChange={handleValueChange}
     >
-      <Editable renderElement={renderElement} renderLeaf={renderLeaf} />
+      <Editable
+        placeholder="写点东西"
+        renderElement={renderElement}
+        renderLeaf={renderLeaf}
+      />
     </Slate>
   );
 });

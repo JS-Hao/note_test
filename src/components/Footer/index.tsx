@@ -2,15 +2,15 @@ import { observer } from "mobx-react-lite";
 import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
 import { Container, CenterText, CreateButton } from "./styled";
-import { store } from "../../models";
+import { application } from "../../models";
 
 export const Footer = observer(() => {
-  const length = store.list.length;
+  const length = application.notes.length;
 
   const navigate = useNavigate();
 
-  const handleClick = useCallback(() => {
-    const note = store.createNote();
+  const handleClick = useCallback(async () => {
+    const note = await application.addNote();
     navigate(`/note/${note.id}`);
   }, [navigate]);
 

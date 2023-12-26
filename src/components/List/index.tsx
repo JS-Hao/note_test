@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { Container, ListItem } from "./styled";
-import { Store } from "../../models";
+import { Note } from "../../models";
 
 interface ListProps {
-  list: Store["list"];
+  data: Note[];
 }
 
 export const List = observer((props: ListProps) => {
-  const { list } = props;
+  const { data } = props;
   return (
     <Container>
-      {list.map((it) => {
+      {data.map((it) => {
         return (
           <ListItem key={it.id}>
             <Link to={`/note/${it.id}`}>
