@@ -26,7 +26,7 @@ export class Application {
   async addNote() {
     const note = new Note(this.local);
     this._noteMap.set(note.id, note);
-    await this.local.addItem(note);
+    await this.local.addItem(note.toJSON());
     return note;
   }
 

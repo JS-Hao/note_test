@@ -1,13 +1,12 @@
 import { makeAutoObservable, observable } from "mobx";
 import { generate } from "shortid";
-import { Descendant } from "slate";
 import { Local } from "../common";
 import { NoteData } from "./NoteData";
 
 export class Note {
   id: string;
   title: string;
-  content: Descendant[];
+  content: string;
   createdTime: number;
   updatedTime: number;
   local: Local;
@@ -15,9 +14,7 @@ export class Note {
   constructor(local: Local, data: Partial<NoteData> = {}) {
     this.id = data.id || generate();
     this.title = data.title || "";
-    this.content = data.content || [
-      { type: "paragraph", children: [{ text: "" }] },
-    ];
+    this.content = data.content || "";
     this.createdTime = data.createdTime || Date.now();
     this.updatedTime = data.updatedTime || Date.now();
     this.local = local;
@@ -30,12 +27,22 @@ export class Note {
   updateTitle(title: string) {
     this.title = title;
     this.updatedTime = Date.now();
-    this.local.updateItem(this);
+    this.local.updateItem(this.toJSON());
   }
 
-  updateContent(content: Descendant[]) {
+  updateContent(content: string) {
     this.content = content;
     this.updatedTime = Date.now();
-    this.local.updateItem(this);
+    this.local.updateItem(this.toJSON());
+  }
+
+  toJSON(): NoteData {
+    return {
+      id: this.id,
+      title: this.title,
+      content: this.content,
+      createdTime: this.createdTime,
+      updatedTime: this.updatedTime,
+    };
   }
 }

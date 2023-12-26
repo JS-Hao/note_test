@@ -1,12 +1,8 @@
 import Dexie, { Table } from "dexie";
 import { NoteData } from "../models";
 
-type Item = Pick<NoteData, "id" | "title" | "createdTime" | "updatedTime"> & {
-  content: string;
-};
-
 class CustomDexie extends Dexie {
-  notes!: Table<Item>;
+  notes!: Table<NoteData>;
 
   constructor() {
     super("notes-local");
@@ -20,25 +16,11 @@ export class Local {
   private _db: CustomDexie = new CustomDexie();
 
   async addItem(note: NoteData) {
-    const item: Item = {
-      id: note.id,
-      title: note.title,
-      createdTime: note.createdTime,
-      updatedTime: note.updatedTime,
-      content: JSON.stringify(note.content),
-    };
-    return this._db.notes.add(item);
+    return this._db.notes.add(note);
   }
 
   async updateItem(note: NoteData) {
-    const item: Item = {
-      id: note.id,
-      title: note.title,
-      createdTime: note.createdTime,
-      updatedTime: note.updatedTime,
-      content: JSON.stringify(note.content),
-    };
-    return this._db.notes.update(item.id, item);
+    return this._db.notes.update(note.id, note);
   }
 
   async deleteItem(id: string) {
@@ -46,9 +28,6 @@ export class Local {
   }
 
   async getItems() {
-    return (await this._db.notes.toArray()).map((it) => ({
-      ...it,
-      content: JSON.parse(it.content),
-    })) as NoteData[];
+    return await this._db.notes.toArray();
   }
 }
