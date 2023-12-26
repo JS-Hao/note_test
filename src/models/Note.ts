@@ -1,15 +1,18 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, observable } from "mobx";
 import { generate } from "shortid";
+import { Descendant } from "slate";
 
 export class Note {
   private _title: string = "";
-  private _content: string = "";
+  _content: Descendant[] = [];
   private _createdTime: number = Date.now();
   private _updatedTime: number = Date.now();
   private _id = generate();
 
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, {
+      _content: observable.ref,
+    });
   }
 
   get id() {
@@ -20,17 +23,8 @@ export class Note {
     return this._title;
   }
 
-  set updateTitle(title: string) {
-    this._title = title;
-  }
-
   get content() {
     return this._content;
-  }
-
-  set updateContent(content: string) {
-    this._content = content;
-    this._updatedTime = Date.now();
   }
 
   get createdTime() {
@@ -39,5 +33,14 @@ export class Note {
 
   get updatedTime() {
     return this._updatedTime;
+  }
+
+  updateTitle(title: string) {
+    this._title = title;
+  }
+
+  updateContent(content: Descendant[]) {
+    this._content = content;
+    this._updatedTime = Date.now();
   }
 }

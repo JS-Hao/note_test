@@ -1,5 +1,7 @@
 import { ObservableMap, makeAutoObservable } from "mobx";
 import { Note } from "./Note";
+import { Descendant } from "slate";
+import {} from "../";
 
 export class Store {
   private _map: ObservableMap<string, Note> = new ObservableMap();
@@ -14,7 +16,7 @@ export class Store {
   get list() {
     const notes = Array.from(this._map.values());
     return notes
-      .sort((it1, it2) => it1.updatedTime - it2.updatedTime)
+      .sort((it1, it2) => it2.updatedTime - it1.updatedTime)
       .map(({ id, title, updatedTime }) => {
         return { id, title, updatedTime };
       });
@@ -44,10 +46,50 @@ export class Store {
   }
 }
 
+const initialValue: Descendant[] = [
+  {
+    type: "paragraph",
+    children: [
+      { text: "This is editable " },
+      { text: "rich", bold: true },
+      { text: " text, " },
+      { text: "much", italic: true },
+      { text: " better than a " },
+      { text: "<textarea>", code: true },
+      { text: "!" },
+    ],
+  },
+  {
+    type: "paragraph",
+    children: [
+      {
+        text: "Since it's rich text, you can do things like turn a selection of text ",
+      },
+      { text: "bold", bold: true },
+      {
+        text: ", or add a semantically rendered block quote in the middle of the page, like this:",
+      },
+    ],
+  },
+  {
+    type: "block-quote",
+    children: [{ text: "A wise quote." }],
+  },
+  {
+    type: "paragraph",
+    align: "center",
+    children: [{ text: "Try it out for yourself!" }],
+  },
+];
+
 const notes = new Array(50).fill(0).map(() => {
   const note = new Note();
-  note.updateTitle = "标题标题标题标题标题标题标题标题标题标题标题标题标题标题";
+  note.updateTitle("标题标题标题标题标题标题标题标题标题标题标题标题标题标题");
+  note.updateContent(initialValue);
   return note;
 });
 
 export const store = new Store(notes);
+
+// @ts-ignore
+window.store = store;
