@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { Note } from '../../../models';
-import { getDate } from '../../../common';
+import { getDateRange } from '../../../common';
 import { Container, GroupContainer, ListItem } from './styled';
 
 export const NotesFlow = observer((props: { data: Note[] }) => {
@@ -10,7 +10,7 @@ export const NotesFlow = observer((props: { data: Note[] }) => {
   const groups = useMemo(() => {
     const res: Array<{ date?: string; list: Note[] }> = [];
     data.forEach((item) => {
-      const date = getDate(item.updatedTime);
+      const date = getDateRange(item.updatedTime);
       const lastItem = res[res.length - 1];
       if (lastItem && lastItem.date === date) {
         lastItem.list.push(item);

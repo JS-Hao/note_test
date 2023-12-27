@@ -31,6 +31,10 @@ const config: Array<{ date: string; condition: (date: number) => boolean }> = [
   { date: '更早', condition: () => true },
 ];
 
-export const getDate = (date: number) => {
+export const getDateRange = (date: number) => {
   return config.find((it) => it.condition(date))?.date;
+};
+
+export const formatDate = (date: number) => {
+  return dayjs(date).format('YYYY年MM月DD日 HH:mm');
 };
