@@ -6,6 +6,7 @@ export const Container = styled.div<{ placeholder?: string }>`
   outline: none;
   padding: 0;
   border: 0;
+  -webkit-user-modify: read-write-plaintext-only;
 
   &:empty:before {
     content: '${({ placeholder }) => placeholder || ''}';

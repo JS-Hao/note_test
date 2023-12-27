@@ -21,7 +21,7 @@ export const Note = observer(() => {
   return (
     <Container>
       <Header>
-        <BackToHome onClick={handleBack} />
+        <BackToHome onTouchStart={handleBack} />
       </Header>
       <Content>
         <Date>{formatDate(note.updatedTime)}</Date>

@@ -17,7 +17,7 @@ export const Footer = observer(() => {
   return (
     <Container>
       <CenterText>{`共${length}个笔记`}</CenterText>
-      <CreateButton onClick={handleClick} />
+      <CreateButton onTouchStart={handleClick} />
     </Container>
   );
 });
