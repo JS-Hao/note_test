@@ -1,6 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { GlobalStyle } from './styled';
-import { ErrorPage } from './components';
 import { Home, Note, NoteLoader } from './views';
 
 const router = createBrowserRouter([
@@ -12,7 +11,6 @@ const router = createBrowserRouter([
     path: '/note/:noteId',
     element: <Note />,
     loader: NoteLoader,
-    errorElement: <ErrorPage />,
   },
 ]);
 

@@ -12,7 +12,7 @@ class CustomDexie extends Dexie {
   }
 }
 
-export class Local {
+export class Cache {
   private _db: CustomDexie = new CustomDexie();
 
   async addItem(note: NoteData) {

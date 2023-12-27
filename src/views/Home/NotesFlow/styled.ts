@@ -1,4 +1,10 @@
 import { styled } from 'styled-components';
+import { DeleteOutlined } from '@ant-design/icons';
+
+export const DeleteIcon = styled(DeleteOutlined)`
+  font-size: 18px;
+  color: #d3d3d3;
+`;
 
 export const Container = styled.div`
   width: 100%;
@@ -10,6 +16,9 @@ export const Container = styled.div`
 `;
 
 export const ListItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 20px;
   border-bottom: 1px solid #d3d3d3;
   box-sizing: border-box;
@@ -17,6 +26,8 @@ export const ListItem = styled.div`
   a {
     text-decoration: none;
     color: #000;
+    overflow: hidden;
+    margin-right: 5px;
   }
 
   .title {
