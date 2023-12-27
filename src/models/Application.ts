@@ -24,7 +24,9 @@ export class Application {
   }
 
   async addNote() {
-    const note = new Note(this.local);
+    const note = new Note(this.local, {
+      title: `未命名笔记${this.notes.length + 1}`,
+    });
     this._noteMap.set(note.id, note);
     await this.local.addItem(note.toJSON());
     return note;

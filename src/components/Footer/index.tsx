@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
-import { Container, CenterText, CreateButton } from "./styled";
+import { CenterText, CreateButton, Container } from "./styled";
 import { application } from "../../models";
 
 export const Footer = observer(() => {

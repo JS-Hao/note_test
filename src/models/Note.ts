@@ -24,17 +24,17 @@ export class Note {
     });
   }
 
-  updateTitle(title: string) {
+  updateTitle = (title: string) => {
     this.title = title;
     this.updatedTime = Date.now();
     this.local.updateItem(this.toJSON());
-  }
+  };
 
-  updateContent(content: string) {
+  updateContent = (content: string) => {
     this.content = content;
     this.updatedTime = Date.now();
     this.local.updateItem(this.toJSON());
-  }
+  };
 
   toJSON(): NoteData {
     return {
