@@ -1,10 +1,9 @@
 import { useLoaderData, LoaderFunction, useNavigate } from 'react-router-dom';
-import { application } from '../../models';
 import { observer } from 'mobx-react-lite';
-import { Container, TitleEditor, ContentEditor } from './styled';
 import { Button } from 'antd';
 import { useCallback } from 'react';
-import { Header } from '../Header';
+import { application } from '../../models';
+import { Container, TitleEditor, ContentEditor, Header } from './styled';
 
 export const NoteLoader: LoaderFunction = ({ params }: any) => {
   return params;
@@ -21,7 +20,9 @@ export const Note = observer(() => {
   if (!note) return <></>;
   return (
     <Container>
-      <Header left={<Button onClick={handleBack}>{'返回'}</Button>} />
+      <Header>
+        <Button onClick={handleBack}>{'返回'}</Button>
+      </Header>
       <TitleEditor initialValue={note.title} onChange={note?.updateTitle} />
       <ContentEditor
         initialValue={note.content}

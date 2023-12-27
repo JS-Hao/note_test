@@ -23,14 +23,14 @@ const isLastMonth = (date: number) => {
   return dayjs(date).isAfter(dayjs().subtract(30, 'day'));
 };
 
-const config: Array<{ text: string; condition: (date: number) => boolean }> = [
-  { text: '今天', condition: isToday },
-  { text: '昨天', condition: isYesterday },
-  { text: '最近7天', condition: isLastWeek },
-  { text: '最近30天', condition: isLastMonth },
-  { text: '更早', condition: () => true },
+const config: Array<{ date: string; condition: (date: number) => boolean }> = [
+  { date: '今天', condition: isToday },
+  { date: '昨天', condition: isYesterday },
+  { date: '最近7天', condition: isLastWeek },
+  { date: '最近30天', condition: isLastMonth },
+  { date: '更早', condition: () => true },
 ];
 
-export const getDateText = (date: number) => {
-  return config.find((it) => it.condition(date))?.text;
+export const getDate = (date: number) => {
+  return config.find((it) => it.condition(date))?.date;
 };

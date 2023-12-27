@@ -10,7 +10,6 @@ export const GlobalStyle = createGlobalStyle`
 
   #root {
     background-color: #F5F5F5;
-    padding: 15px;
     box-sizing: border-box;
   }
 `;

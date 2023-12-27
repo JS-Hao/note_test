@@ -5,13 +5,14 @@ export const Container = styled.div`
   height: 100%;
   overflow-y: overlay;
   border-radius: 6px;
-  background-color: #fff;
+  box-sizing: border-box;
+  padding: 15px;
 `;
 
 export const ListItem = styled.div`
-  margin: 15px;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+  padding: 20px;
+  border-bottom: 1px solid #d3d3d3;
+  box-sizing: border-box;
 
   a {
     text-decoration: none;
@@ -24,10 +25,22 @@ export const ListItem = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    min-height: 25px;
+  }
+`;
+
+export const GroupContainer = styled.div`
+  .date {
+    font-size: 24px;
+    padding: 20px 0 10px 5px;
   }
 
-  .updated-time {
-    font-size: 12px;
-    color: #ccc;
+  .list-wrapper {
+    background-color: #fff;
+    border-radius: 16px;
+  }
+
+  .list-item:last-child {
+    border-bottom: none;
   }
 `;

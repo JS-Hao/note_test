@@ -1,5 +1,5 @@
 import Dexie, { Table } from 'dexie';
-import { NoteData } from '../models';
+import { NoteData } from '.';
 
 class CustomDexie extends Dexie {
   notes!: Table<NoteData>;

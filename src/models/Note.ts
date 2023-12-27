@@ -1,6 +1,6 @@
 import { makeAutoObservable, observable } from 'mobx';
 import { generate } from 'shortid';
-import { Local } from '../common';
+import { Local } from './Local';
 import { NoteData } from './NoteData';
 
 export class Note {

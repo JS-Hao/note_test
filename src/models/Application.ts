@@ -1,5 +1,6 @@
 import { ObservableMap, makeAutoObservable } from 'mobx';
-import { Local } from '../common';
+import { generate } from 'shortid';
+import { Local } from './Local';
 import { Note } from './Note';
 
 export class Application {
@@ -43,7 +44,15 @@ export class Application {
     const items = await this.local.getItems();
     items.forEach((item) => {
       const note = new Note(this.local, item);
+      const note2 = new Note(this.local, { ...item, updatedTime: Date.now() - 3600 * 24 * 1000 });
+      const note3 = new Note(this.local, { ...item, updatedTime: Date.now() - 6 * 3600 * 24 * 1000 });
+
+      note2.id = generate();
+      note3.id = generate();
+
       this._noteMap.set(note.id, note);
+      this._noteMap.set(note2.id, note2);
+      this._noteMap.set(note3.id, note3);
     });
     this._ready = true;
   }

@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { EditOutlined } from '@ant-design/icons';
+import { FormOutlined } from '@ant-design/icons';
 
 export const Container = styled.div`
   position: fixed;
@@ -22,7 +22,7 @@ export const CenterText = styled.div`
   align-items: center;
 `;
 
-export const CreateButton = styled(EditOutlined)`
+export const CreateButton = styled(FormOutlined)`
   position: absolute;
   right: 20px;
   top: 50%;

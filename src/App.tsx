@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { GlobalStyle } from './styled';
-import { ErrorPage, Home, Note, NoteLoader } from './components';
+import { ErrorPage } from './components';
+import { Home, Note, NoteLoader } from './views';
 
 const router = createBrowserRouter([
   {

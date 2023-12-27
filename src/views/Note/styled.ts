@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { Editor } from '../Editor';
+import { Editor } from '../../components/Editor';
 
 export const Container = styled.div``;
 
@@ -11,3 +11,5 @@ export const TitleEditor = styled(Editor)`
 export const ContentEditor = styled(Editor)`
   font-size: 14px;
 `;
+
+export const Header = styled.div``;
