@@ -1,5 +1,5 @@
-import { styled } from "styled-components";
-import { Editor } from "../Editor";
+import { styled } from 'styled-components';
+import { Editor } from '../Editor';
 
 export const Container = styled.div``;
 

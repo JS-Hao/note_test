@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 export const Container = styled.div<{ placeholder?: string }>`
   width: 100%;
@@ -8,7 +8,7 @@ export const Container = styled.div<{ placeholder?: string }>`
   border: 0;
 
   &:empty:before {
-    content: "${({ placeholder }) => placeholder || ""}";
+    content: '${({ placeholder }) => placeholder || ''}';
     color: #ccc;
   }
 `;

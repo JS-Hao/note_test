@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { Container } from "./styled";
+import { ReactNode } from 'react';
+import { Container } from './styled';
 
 interface HeaderProps {
   className?: string;

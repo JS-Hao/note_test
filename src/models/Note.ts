@@ -1,7 +1,7 @@
-import { makeAutoObservable, observable } from "mobx";
-import { generate } from "shortid";
-import { Local } from "../common";
-import { NoteData } from "./NoteData";
+import { makeAutoObservable, observable } from 'mobx';
+import { generate } from 'shortid';
+import { Local } from '../common';
+import { NoteData } from './NoteData';
 
 export class Note {
   id: string;
@@ -13,8 +13,8 @@ export class Note {
 
   constructor(local: Local, data: Partial<NoteData> = {}) {
     this.id = data.id || generate();
-    this.title = data.title || "";
-    this.content = data.content || "";
+    this.title = data.title || '';
+    this.content = data.content || '';
     this.createdTime = data.createdTime || Date.now();
     this.updatedTime = data.updatedTime || Date.now();
     this.local = local;

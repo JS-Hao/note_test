@@ -1,14 +1,14 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { GlobalStyle } from "./styled";
-import { ErrorPage, Home, Note, NoteLoader } from "./components";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { GlobalStyle } from './styled';
+import { ErrorPage, Home, Note, NoteLoader } from './components';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Home />,
   },
   {
-    path: "/note/:noteId",
+    path: '/note/:noteId',
     element: <Note />,
     loader: NoteLoader,
     errorElement: <ErrorPage />,

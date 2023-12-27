@@ -1,6 +1,6 @@
-import { ObservableMap, makeAutoObservable } from "mobx";
-import { Local } from "../common";
-import { Note } from "./Note";
+import { ObservableMap, makeAutoObservable } from 'mobx';
+import { Local } from '../common';
+import { Note } from './Note';
 
 export class Application {
   public local = new Local();
@@ -18,9 +18,7 @@ export class Application {
   }
 
   get notes() {
-    return Array.from(this._noteMap.values()).sort(
-      (it1, it2) => it2.updatedTime - it1.updatedTime
-    );
+    return Array.from(this._noteMap.values()).sort((it1, it2) => it2.updatedTime - it1.updatedTime);
   }
 
   async addNote() {

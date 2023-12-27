@@ -1,12 +1,5 @@
-import {
-  useCallback,
-  FormEventHandler,
-  CompositionEventHandler,
-  useRef,
-  useState,
-  useEffect,
-} from "react";
-import { Container } from "./styled";
+import { useCallback, FormEventHandler, CompositionEventHandler, useRef, useState, useEffect } from 'react';
+import { Container } from './styled';
 
 interface EditorProps {
   initialValue: string;
@@ -41,7 +34,7 @@ export const Editor = (props: EditorProps) => {
       const text = (target as HTMLDivElement).innerHTML;
       onChange?.(text);
     },
-    [onChange]
+    [onChange],
   );
 
   const handleCompositionStart = useCallback<CompositionEventHandler>(() => {
@@ -53,7 +46,7 @@ export const Editor = (props: EditorProps) => {
       isComposition.current = false;
       handleInput(e);
     },
-    [handleInput]
+    [handleInput],
   );
 
   useEffect(() => {

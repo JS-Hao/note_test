@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import { observer } from "mobx-react-lite";
-import { Container, ListItem } from "./styled";
-import { Note } from "../../models";
-import { getDateText } from "../../common";
+import { Link } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
+import { Note } from '../../models';
+import { getDateText } from '../../common';
+import { Container, ListItem } from './styled';
 
 interface ListProps {
   data: Note[];

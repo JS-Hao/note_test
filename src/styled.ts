@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   #root {
-    background-color: #eee;
+    background-color: #F5F5F5;
     padding: 15px;
     box-sizing: border-box;
   }

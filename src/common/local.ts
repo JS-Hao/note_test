@@ -1,13 +1,13 @@
-import Dexie, { Table } from "dexie";
-import { NoteData } from "../models";
+import Dexie, { Table } from 'dexie';
+import { NoteData } from '../models';
 
 class CustomDexie extends Dexie {
   notes!: Table<NoteData>;
 
   constructor() {
-    super("notes-local");
+    super('notes-local');
     this.version(2).stores({
-      notes: "++id, title, createdTime, updatedTime, content",
+      notes: '++id, title, createdTime, updatedTime, content',
     });
   }
 }
